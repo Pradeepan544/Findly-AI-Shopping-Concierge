@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Findly — AI Shopping Concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><span>✳</span> findly</div>
+    <div class="hero"><small>YOUR PERSONAL SHOPPER</small><h1>Less scrolling.<br><i>Better finding.</i></h1><p>Tell us what you need. We'll ask only what's useful, then find the closest matches.</p></div>
+    <div class="data-status"><span class="{{'online' if dataset_ready else 'offline'}}"></span><div><b>{{'Dataset connected' if dataset_ready else 'Dataset not found'}}</b><small>{{product_count}} unique products loaded</small></div></div>
+    <p class="disclaimer">Historical Amazon dataset. Prices and availability may not reflect current Amazon listings.</p>
+  </aside>
+  <main class="main">
+    <header><div><small>AI SHOPPING CONCIERGE</small><h2>What are we looking for?</h2></div><button id="reset">↻ New search</button></header>
+    <div class="layout">
+      <section class="chat">
+        <div class="chat-title"><div class="bot">✳</div><div><b>Findly assistant</b><small><span></span> Ready to help you find it</small></div><label>AI ASSISTED</label></div>
+        <div id="messages" class="messages"><div class="msg botmsg"><p>Hi! I'm Findly. Tell me what you're shopping for — in your own words. You can mention a product, budget, brand or features that matter.</p></div></div>
+        <div id="suggestions" class="suggestions"><button>Wireless earphones under ₹3,000</button><button>A highly rated keyboard</button><button>Sony headphones under ₹5,000</button></div>
+        <form id="form"><input id="input" placeholder="Describe what you're looking for..." autocomplete="off" required><button id="send">Send ↑</button></form>
+        <div class="hint">Enter to send · One useful question at a time</div>
+      </section>
+      <aside class="details">
+        <div class="heading"><div><small>LIVE REQUIREMENTS</small><h3>Your shopping brief</h3></div><span id="filled">0/7</span></div>
+        <div id="state" class="state"><p class="placeholder">Your preferences will appear here as we chat.</p></div>
+        <div class="heading resultheading"><div><small>MATCHED FOR YOU</small><h3>Product matches</h3></div><span id="matches">—</span></div>
+        <div id="products" class="products"><p class="placeholder">Recommendations will appear when the assistant has enough information.</p></div>
+        <div class="grounded"><b>✦ Grounded recommendations</b><p>Product claims are limited to details supported by the dataset. Brand is inferred from product text.</p></div>
+      </aside>
+    </div>
+    <footer>Built for thoughtful shopping · AI-assisted product discovery</footer>
+  </main>
+</div>
+<script src="{{url_for('static',filename='app.js')}}"></script>
+</body></html>
